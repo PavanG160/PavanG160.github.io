@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroBoost | IQ Trainer</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #38bdf8;
+            --success: #4ade80;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --secondary: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- LOGIN PAGE --- */
+        #login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .login-box {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--accent);
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            width: 250px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- DASHBOARD --- */
+        #main-content { display: none; }
+
+        header {
+            padding: 15px 5%;
+            background: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        #dashboard {
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: var(--card);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #334155;
+            overflow: hidden;
+        }
+
+        .game-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .thumbnail { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem; background: #0f172a; }
+
+        /* --- GAME VIEW --- */
+        #game-view {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .quiz-options { display: grid; gap: 10px; width: 100%; max-width: 400px; }
+        
+        .btn {
+            background: var(--accent); color: var(--bg); border: none;
+            padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer;
+        }
+
+        .option-btn {
+            background: #334155; color: white; border: 1px solid #475569;
+            padding: 15px; border-radius: 10px; cursor: pointer;
+        }
+
+        .result-screen {
+            font-size: 2rem;
+            color: var(--success);
+            text-align: center;
+            animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes pop { from { transform: scale(0.5); } to { transform: scale(1); } }
+
+        canvas { background: #000; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="login-page">
+        <div class="login-box">
+            <h1>Welcome to NeuroBoost</h1>
+            <p>Please enter your name to begin training</p>
+            <input type="text" id="user-name-input" placeholder="Your Name Here...">
+            <br>
+            <button class="btn" onclick="startGameHub()">Enter Hub</button>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <header>
+            <div style="font-weight: 900; color: var(--accent); font-size: 1.5rem;" onclick="goHome()">NEUROBOOST</div>
+            <div>User: <b id="display-name">---</b> | IQ: <b id="global-iq">100</b></div>
+        </header>
+
+        <main id="dashboard">
+            <div class="game-card" onclick="loadGame('quiz')">
+                <div class="thumbnail">⚡</div>
+                <div class="info" style="padding: 15px;"><h3>Crazy IQ Quiz</h3><p>Test your logic & trivia.</p></div>
+            </div>
+            <div class="game-card" onclick="loadGame('rocket')">
+                <div class="thumbnail">🚀</div>
+                <div class="info" style="padding: 15px;"><h3>Rocket Lander</h3><p>Physics & Coordination.</p></div>
+            </div>
+            <div class="game-card" onclick="loadGame('math')">
+                <div class="thumbnail">🔢</div>
+                <div class="info" style="padding: 15px;"><h3>Fast Math</h3><p>Speed arithmetic.</p></div>
+            </div>
+        </main>
+
+        <div id="game-view">
+            <div id="game-content"></div>
+            <button class="btn" style="margin-top: 40px; background: #334155; color: white;" onclick="goHome()">Exit Game</button>
+        </div>
+    </div>
+
+    <script>
+        let userName = "";
+        let currentIQ = 100;
+
+        function startGameHub() {
+            const input = document.getElementById('user-name-input').value;
+            if (input.trim() === "") { alert("Please enter a name!"); return; }
+            userName = input;
+            document.getElementById('display-name').innerText = userName;
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        function goHome() {
+            document.getElementById('dashboard').style.display = 'grid';
+            document.getElementById('game-view').style.display = 'none';
+        }
+
+        function loadGame(id) {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('game-view').style.display = 'flex';
+            const container = document.getElementById('game-content');
+            container.innerHTML = "";
+
+            if (id === 'quiz') startQuiz(container);
+            if (id === 'rocket') startRocket(container);
+            if (id === 'math') startMath(container);
+        }
+
+        /* --- CRAZY IQ QUIZ --- */
+        const questions = [
+            { q: "Have you seen KGF?", a: ["Yes", "No", "Legendary!", "Who?"], c: 2 },
+            { q: "Who is the hero of KGF?", a: ["Rocky Bhai (Yash)", "Prabhas", "Allu Arjun", "Sanjay Dutt"], c: 0 },
+            { q: "Logic: 1+1+1+1+1+1+1+1+1+1-1+1 x 0 = ?", a: ["10", "0", "9", "1"], c: 2 },
+            { q: "If you have 3 apples and you take 2, how many do you have?", a: ["1", "2", "3", "5"], c: 1 }
+        ];
+        let qIdx = 0;
+
+        function startQuiz(container) {
+            qIdx = 0;
+            renderQuestion(container);
+        }
+
+        function renderQuestion(container) {
+            const data = questions[qIdx];
+            container.innerHTML = `<h2>${data.q}</h2><div class="quiz-options"></div>`;
+            const optionsDiv = container.querySelector('.quiz-options');
+            data.a.forEach((opt, i) => {
+                const b = document.createElement('button');
+                b.className = 'option-btn';
+                b.innerText = opt;
+                b.onclick = () => {
+                    if(i === data.c) currentIQ += 50; else currentIQ -= 100;
+                    document.getElementById('global-iq').innerText = currentIQ;
+                    qIdx++;
+                    if(qIdx < questions.length) renderQuestion(container);
+                    else showFinalResult(container);
+                };
+                optionsDiv.appendChild(b);
+            });
+        }
+
+        function showFinalResult(container) {
+            container.innerHTML = `
+                <div class="result-screen">
+                    Congratulations ${userName}!<br>
+                    Your final IQ is ${currentIQ}
+                </div>
+            `;
+        }
+
+        /* --- MATH GAME --- */
+        function startMath(container) {
+            let a = Math.floor(Math.random()*20), b = Math.floor(Math.random()*20);
+            let ans = a + b;
+            container.innerHTML = `<h2>Fast Math</h2><div style="font-size:3rem">${a} + ${b}</div><input type="number" id="mi" style="font-size:2rem; width:100px; text-align:center;">`;
+            const input = document.getElementById('mi');
+            input.focus();
+            input.onkeyup = () => {
+                if(parseInt(input.value) === ans) { currentIQ += 10; document.getElementById('global-iq').innerText = currentIQ; startMath(container); }
+            }
+        }
+
+        /* --- ROCKET GAME --- */
+        function startRocket(container) {
+            container.innerHTML = `<h2>Rocket Lander</h2><canvas id="rc" width="300" height="300"></canvas>`;
+            const canvas = document.getElementById('rc');
+            const ctx = canvas.getContext('2d');
+            let y = 50, v = 0, t = false;
+            window.onkeydown = () => t = true; window.onkeyup = () => t = false;
+            function loop() {
+                ctx.clearRect(0,0,300,300);
+                if(t) v -= 0.2; else v += 0.15;
+                y += v;
+                ctx.fillStyle = "gray"; ctx.fillRect(0, 280, 300, 20);
+                ctx.font = "30px Arial"; ctx.fillText(t?"🔥":"🚀", 135, y);
+                if(y > 250) {
+                    if(v > 1.2) { currentIQ -= 50; alert("CRASHED!"); } 
+                    else { currentIQ += 50; alert("PERFECT!"); }
+                    document.getElementById('global-iq').innerText = currentIQ;
+                    goHome(); return;
+                }
+                requestAnimationFrame(loop);
+            }
+            loop();
+        }
+    </script>
+</body>
+</html>
