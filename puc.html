@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Next After PUC (WNAP) | Comprehensive Career & Course Guidance</title>
+    <style>
+        /* --- Crazy Clean Cyberpunk Theme Variables --- */
+        :root {
+            --bg-primary: #0a0b10;
+            --bg-secondary: #121420;
+            --bg-card: #1a1d30;
+            --accent-cyan: #00f2fe;
+            --accent-purple: #9b51e0;
+            --accent-gold: #ffd700;
+            --text-main: #f8f9fa;
+            --text-muted: #a0aec0;
+            --glow: 0 0 25px rgba(0, 242, 254, 0.3);
+            --heavy-glow: 0 0 40px rgba(0, 242, 254, 0.6), 0 0 70px rgba(155, 81, 224, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- SUPREME HIGH-HIGHLIGHTED HEADER BANNER --- */
+        .pavan-header-banner {
+            padding: 2rem 1rem;
+            background: linear-gradient(0deg, transparent 0%, #0d0f18 100%);
+            border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .pavan-header-banner::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+        }
+
+        .pavan-glow-container {
+            display: inline-block;
+            position: relative;
+            border-radius: 50px;
+            padding: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-cyan));
+            background-size: 200% auto;
+            animation: gradientMove 3s linear infinite;
+            box-shadow: var(--heavy-glow);
+        }
+
+        .pavan-badge {
+            background: #0a0b10;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .pavan-badge span {
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        /* --- Header Styles --- */
+        header {
+            text-align: center;
+            padding: 2rem 1rem 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* --- Interactive Sections --- */
+        .step-section {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+
+        .section-title.gov::before {
+            background: var(--accent-gold);
+        }
+
+        /* --- Grid & Button Styling --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .btn {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 2px solid transparent;
+            padding: 1.5rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow);
+        }
+
+        .btn.active {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(155, 81, 224, 0.1));
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 25px rgba(155, 81, 224, 0.25);
+        }
+
+        /* --- Course Selection Tags --- */
+        .course-tag-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .course-tag {
+            background: var(--bg-card);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .course-tag:hover {
+            background: rgba(0, 242, 254, 0.05);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow);
+            transform: translateY(-2px);
+        }
+
+        .course-tag.active {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow);
+        }
+
+        /* --- Visibility Utility Classes --- */
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        .visible {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Results Display --- */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .career-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.8rem;
+            border-left: 4px solid var(--accent-purple);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .career-card.gov-card {
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .career-card h4 {
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            width: max-content;
+            background: rgba(155, 81, 224, 0.15); 
+            color: var(--accent-purple);
+        }
+
+        .badge.gov-badge {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--accent-gold);
+        }
+
+        .career-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .career-card ul {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .career-card ul li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* --- Clean Subtle Footer --- */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.4rem; }
+            .step-section { padding: 1.5rem; }
+            .pavan-badge { padding: 1rem 2rem; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pavan-header-banner">
+        <div class="pavan-glow-container">
+            <div class="pavan-badge">
+                Built with Architecture & Precision by <span>PAVAN G</span>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <h1>What Next After PUC (WNAP)</h1>
+        <p>Your Next Big Step Begins Here. Select options below to reveal paths.</p>
+    </header>
+
+    <main class="container">
+        
+        <section class="step-section">
+            <h3 class="section-title">Step 1: Choose Your Stream</h3>
+            <div class="grid" id="stream-grid">
+                <button class="btn" onclick="selectStream('commerce', this)">Commerce</button>
+                <button class="btn" onclick="selectStream('science', this)">Science</button>
+                <button class="btn" onclick="selectStream('arts', this)">Arts</button>
+            </div>
+        </section>
+
+        <section id="combination-section" class="step-section hidden">
+            <h3 class="section-title" id="combination-title">Step 2: Choose Your Combination</h3>
+            <div class="grid" id="combination-grid"></div>
+        </section>
+
+        <section id="course-section" class="step-section hidden">
+            <h3 class="section-title" id="course-title">Step 3: Available UG Degree Courses</h3>
+            <div class="course-tag-grid" id="course-tags-container"></div>
+        </section>
+
+        <section id="career-section" class="step-section hidden">
+            <h3 class="section-title" id="career-title">Step 4: Future Roadmaps & Corporate Roles</h3>
+            <div class="career-grid" id="career-results"></div>
+        </section>
+
+        <section id="gov-jobs-section" class="step-section hidden">
+            <h3 class="section-title gov">Universal Government Job Framework</h3>
+            <div class="career-grid" id="gov-jobs-results"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; WNAP Guidance Framework Portal.</p>
+    </footer>
+
+    <script>
+        // --- Comprehensive Educational Roadmap Data & Government Sectors ---
+        const courseDataMap = {
+            commerce: {
+                EBACS: [
+                    { name: "B.Com (Computer Applications)", pg: "M.Com / MCA / MBA (FinTech)", careers: ["FinTech Solutions Analyst", "Corporate Systems Auditor", "Enterprise Database Manager"] },
+                    { name: "BBA (Information Systems)", pg: "MBA (Data Analytics / E-Commerce Operations)", careers: ["Digital Commerce Product Manager", "Business Intelligence Specialist", "Tech Strategy Consultant"] },
+                    { name: "B.Sc (Data Science - Commerce Intersect)", pg: "M.Sc (Data Analytics) / Professional Data Engineer", careers: ["Financial Data Scientist", "Quantitative Commerce Analyst", "Business Data Modeler"] }
+                ],
+                EBAS: [
+                    { name: "B.Sc (Statistics & Analytics)", pg: "M.Sc (Actuarial Science) / Professional Actuary Levels", careers: ["Risk Architecture Lead", "Insurance Modeling Expert", "Asset Risk Assessor"] },
+                    { name: "B.Com (Honours)", pg: "MBA (Finance) / Chartered Financial Analyst (CFA)", careers: ["Investment Banker", "Portfolio Fund Advisor", "Mergers & Acquisitions Lead"] },
+                    { name: "B.Sc (Economics)", pg: "MA (Economics) / M.Sc (Business Analytics)", careers: ["Corporate Macro-Economist", "Strategic Market Analyst", "Quantitative Fiscal Analyst"] },
+                    { name: "BBA (Finance & Accounts)", pg: "Master of Finance / ACCA / CMA Certifications", careers: ["Corporate Financial Controller", "Treasury Operations Analyst", "Management Accountant"] }
+                ]
+            },
+            science: {
+                PCMB: [
+                    { name: "MBBS / BDS / BAMS / BHMS", pg: "MD / MS Medical Specialization Degrees", careers: ["Licensed General Physician", "Clinical Consultant Surgeon", "Medical Superintendent"] },
+                    { name: "B.Pharm (Bachelor of Pharmacy)", pg: "M.Pharm / Doctor of Pharmacy (Pharm.D)", careers: ["Clinical Drug Research Lead", "Pharmaceutical Formulation Engineer", "Quality Regulatory Officer"] },
+                    { name: "B.Sc (Biotechnology / Microbiology)", pg: "M.Sc / M.Tech (Molecular Genetics or Industrial Biotech)", careers: ["Biomedical Laboratory Director", "Genetic Profiling Engineer", "Bioprocess Scientist"] },
+                    { name: "B.Sc (Agriculture / Forestry)", pg: "M.Sc (Agronomy) / Ph.D. Research Agriculturalist", careers: ["Agritech Operations Manager", "Soil Health Consultant", "Plant Geneticist"] },
+                    { name: "B.Sc (Nursing / Allied Health Sciences)", pg: "M.Sc Nursing / Healthcare Administration Master", careers: ["Critical Care Nursing Director", "Allied Medical Lab Manager", "Clinical Coordinator"] }
+                ],
+                PCMCS: [
+                    { name: "B.Tech / B.E. (Computer Science & Engineering)", pg: "M.Tech / MS (Artificial Intelligence & Machine Learning)", careers: ["AI Deep Learning Architect", "Automation Systems Design Engineer", "Enterprise Data Scientist"] },
+                    { name: "BCA (Computer Applications)", pg: "MCA (Master of Computer Applications) / M.Sc (CS)", careers: ["Full Stack Systems Architect", "Native Enterprise Application Dev", "Cloud Infrastructure Engineer"] },
+                    { name: "B.Sc (Computer Science / Information Technology)", pg: "M.Sc (Information Security / Cybersecurity Frameworks)", careers: ["Incident Threat Response Lead", "Digital Forensics Expert", "Cloud Security Infrastructure Architect"] },
+                    { name: "B.Tech (Data Science / Cyber Security)", pg: "MS in Enterprise Security Architecture / Data Analytics", careers: ["Predictive Analytics Engineer", "Penetration Testing Consultant", "Data Operations (DataOps) Manager"] }
+                ]
+            },
+            arts: {
+                general: [
+                    { name: "BA LLB (Integrated 5-Year Law Degree)", pg: "LLM (Master of Laws) / Judicial Services Specialization", careers: ["Corporate Litigation Advocate", "Criminal Law Defense Counsel", "Judicial Magistrate / Legal Officer"] },
+                    { name: "BA (Political Science / History / Sociology)", pg: "MA (Public Policy) / International Relations / Civil Service Track", careers: ["Strategic Public Policy Consultant", "Humanitarian NGO Executive", "Foreign Intelligence Analyst"] },
+                    { name: "BA (Journalism & Mass Media Communication)", pg: "MA (Mass Communication) / Digital Media PR Architectures", careers: ["Investigative News Broadcaster", "Global Public Relations Manager", "Chief Content Editor"] },
+                    { name: "BA (Clinical Psychology / English)", pg: "M.Sc (Clinical Psychology) / MA Linguistics / Human Resources", careers: ["Licensed Clinical Therapist", "Corporate HR Strategist", "Technical Communications Editor"] },
+                    { name: "BFA / B.Des (Fine Arts & Spatial/Fashion Design)", pg: "Master of Design (M.Des) / Visual Arts Academy", careers: ["Creative Art Director", "UI/UX Experience Architect", "Industrial Fashion Designer"] }
+                ]
+            }
+        };
+
+        const universalGovJobs = [
+            {
+                category: "Union & State Civil Services (Elite Administration)",
+                eligibility: "Any Undergraduate Degree (Arts / Commerce / Science)",
+                exams: ["UPSC Civil Services Exam (IAS, IPS, IFS)", "State PSCs (KAS, KPSC, MPSC, etc.) Group A/B Posts"],
+                roles: ["District Magistrate / Collector", "Superintendent of Police (SP)", "Sub-Divisional Magistrate", "Commercial Tax Officer"]
+            },
+            {
+                category: "Banking & Financial Governance Sector",
+                eligibility: "Any Undergraduate Degree (Highly favored for Commerce/Econ backgrounds)",
+                exams: ["IBPS PO / Clerk", "SBI PO / SO (Specialist Officer)", "RBI Grade B Officer Examination"],
+                roles: ["Bank Probationary Officer", "Reserve Bank Manager", "Financial Systems Auditor", "Credit Risk Assessor"]
+            },
+            {
+                category: "Defense, Intelligence & Para-Military Command",
+                eligibility: "Any Degree (B.Sc/B.Tech mandatory for core Air Force/Technical Entry wings)",
+                exams: ["UPSC CDS (Combined Defense Services)", "AFCAT (Air Force Common Admission Test)", "SSC CPO / IB ACIO Exam"],
+                roles: ["Commissioned Officer (Army/Navy/Air Force)", "Intelligence Bureau (IB) Assistant Director", "Central Para-Military Commandant"]
+            },
+            {
+                category: "Staff Selection Commission (SSC) Central Portfolios",
+                eligibility: "Any Undergraduate Degree (Specific analytical tasks require Math/Stats metrics)",
+                exams: ["SSC CGL (Combined Graduate Level Exam)"],
+                roles: ["Income Tax Inspector", "Central Excise & Customs Officer", "Enforcement Directorate (ED) Assistant", "CBI Sub-Inspector"]
+            },
+            {
+                category: "Technical, Scientific & Research Sovereign Cadres",
+                eligibility: "Strictly Science / Engineering / Allied Tech Degrees",
+                exams: ["ISRO Scientist Entry / DRDO SET Exam", "GATE (Government PSU Engineering Recruitments)", "BARC Training Schools Entry"],
+                roles: ["Defense Research Scientist", "Aerospace Design Engineer", "Public Sector Unit (ONGC, IOCL, GAIL) Executive Engineer", "Nuclear Systems Analyst"]
+            }
+        ];
+
+        let currentActiveStream = '';
+        let currentActiveCombo = '';
+
+        // --- Core UI Navigation Logic ---
+        function selectStream(stream, element) {
+            document.querySelectorAll('#stream-grid .btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+
+            currentActiveStream = stream;
+            hideSection('combination-section');
+            hideSection('course-section');
+            hideSection('career-section');
+            hideSection('gov-jobs-section');
+
+            const comboGrid = document.getElementById('combination-grid');
+            comboGrid.innerHTML = ''; 
+
+            if (stream === 'arts') {
+                currentActiveCombo = 'general';
+                displayAvailableCourses(courseDataMap.arts.general);
+                displayUniversalGovJobs();
+            } else {
+                document.getElementById('combination-title').innerText = `Step 2: Choose Your ${stream.charAt(0).toUpperCase() + stream.slice(1)} Combination`;
+                let options = stream === 'commerce' ? ['EBACS', 'EBAS'] : ['PCMB', 'PCMCS'];
+                
+                options.forEach(opt => {
+                    const button = document.createElement('button');
+                    button.className = 'btn';
+                    button.innerText = opt;
+                    button.onclick = function() {
+                        document.querySelectorAll('#combination-grid .btn').forEach(b => b.classList.remove('active'));
+                        button.classList.add('active');
+                        currentActiveCombo = opt;
+                        hideSection('career-section');
+                        displayAvailableCourses(courseDataMap[stream][opt]);
+                        displayUniversalGovJobs();
+                    };
+                    comboGrid.appendChild(button);
+                });
+
+                showSection('combination-section');
+            }
+        }
+
+        function displayAvailableCourses(coursesList) {
+            const tagsContainer = document.getElementById('course-tags-container');
+            tagsContainer.innerHTML = '';
+
+            coursesList.forEach(course => {
+                const tagButton = document.createElement('button');
+                tagButton.className = 'course-tag';
+                tagButton.innerText = course.name;
+                tagButton.onclick = function() {
+                    document.querySelectorAll('#course-tags-container .course-tag').forEach(t => t.classList.remove('active'));
+                    tagButton.classList.add('active');
+                    revealCareerInsights(course);
+                };
+                tagsContainer.appendChild(tagButton);
+            });
+
+            showSection('course-section');
+        }
+
+        function revealCareerInsights(selectedCourse) {
+            const careerResults = document.getElementById('career-results');
+            document.getElementById('career-title').innerText = `Step 4: Roadmaps For ${selectedCourse.name}`;
+            careerResults.innerHTML = ''; 
+
+            // Create Postgraduate Box
+            const pgCard = document.createElement('div');
+            pgCard.className = 'career-card';
+            pgCard.innerHTML = `
+                <h4>Recommended PG Trajectory</h4>
+                <div class="badge">Higher Education</div>
+                <p>Following graduation, the optimal professional route moves through: <strong>${selectedCourse.pg}</strong>.</p>
+            `;
+            careerResults.appendChild(pgCard);
+
+            // Create Career Roles Boxes
+            selectedCourse.careers.forEach(jobTitle => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'career-card';
+                jobCard.innerHTML = `
+                    <h4>${jobTitle}</h4>
+                    <div class="badge">Target Corporate Sector Placement</div>
+                    <p>Enter enterprise industries managing specialized operations matching your academic core skillsets and practical domain training.</p>
+                `;
+                careerResults.appendChild(jobCard);
+            });
+
+            showSection('career-section');
+        }
+
+        function displayUniversalGovJobs() {
+            const govResults = document.getElementById('gov-jobs-results');
+            govResults.innerHTML = '';
+
+            universalGovJobs.forEach(gov => {
+                // If stream is NOT science, filter out pure science/tech government cadres to prevent mismatch
+                if (currentActiveStream !== 'science' && gov.category.includes("Technical, Scientific")) {
+                    return;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'career-card gov-card';
+                
+                let examListHtml = gov.exams.map(ex => `<li>${ex}</li>`).join('');
+                let roleListHtml = gov.roles.map(r => `<li>${r}</li>`).join('');
+
+                card.innerHTML = `
+                    <h4>${gov.category}</h4>
+                    <div class="badge gov-badge">Sovereign State Entry</div>
+                    <p style="font-size: 0.9rem; color: #ffd700;"><strong>Academic Base requirement:</strong> ${gov.eligibility}</p>
+                    <div style="margin-top: 0.5rem;">
+                        <strong style="font-size: 0.95rem; color: #fff;">Competitive Gateways:</strong>
+                        <ul style="margin-top: 0.3rem;">${examListHtml}</ul>
+                    </div>
+                    <div style="margin-top: 0.5rem;">
+                        <strong style="font-size: 0.95rem; color: #fff;">Target Designation Roles:</strong>
+                        <ul style="margin-top: 0.3rem;">${roleListHtml}</ul>
+                    </div>
+                `;
+                govResults.appendChild(card);
+            });
+
+            showSection('gov-jobs-section');
+        }
+
+        // --- View Manipulation Framework Functions ---
+        function showSection(id) {
+            const el = document.getElementById(id);
+            el.classList.remove('hidden');
+            el.classList.add('visible');
+        }
+
+        function hideSection(id) {
+            const el = document.getElementById(id);
+            el.classList.remove('visible');
+            el.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
